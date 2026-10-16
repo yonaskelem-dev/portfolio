@@ -23,3 +23,18 @@ document.querySelectorAll('a[href^="#"]').forEach(function (link) {
 });
 
 showSection("home");
+
+const menuBtn = document.getElementById("menuBtn");
+const sidebarEl = document.querySelector(".sidebar");
+
+// open / close the menu
+menuBtn.addEventListener("click", function () {
+  sidebarEl.classList.toggle("open");
+});
+
+// close the menu after clicking a link
+document.querySelectorAll(".sidebar a").forEach(function (link) {
+  link.addEventListener("click", function () {
+    sidebarEl.classList.remove("open");
+  });
+});

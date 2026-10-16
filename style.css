@@ -508,3 +508,110 @@ body {
 .content {
   overflow: hidden;
 }
+
+/* hidden on desktop */
+.menu-btn {
+  display: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* Laptop / small screens */
+@media (max-width: 1100px) {
+  .service-grid,
+  .project-grid,
+  .testimonial-grid,
+  .contact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Tablet and phone */
+@media (max-width: 900px) {
+  /* menu button */
+  .menu-btn {
+    display: block;
+    position: fixed;
+    top: 10px;
+    right: 15px;
+    z-index: 2000;
+    width: 44px;
+    height: 44px;
+    font-size: 24px;
+    background: #fcf8ff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  /* sidebar hides on the left, slides in when open */
+  .sidebar {
+    z-index: 1000;
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .content {
+    margin-left: 0;
+    padding-top: 60px;
+  }
+
+  /* home: photo on top, text below */
+  .home {
+    flex-direction: column-reverse;
+    gap: 30px;
+    min-height: auto;
+    padding: 30px 20px 50px;
+    text-align: center;
+  }
+
+  .home img {
+    width: 240px;
+    height: 300px;
+  }
+
+  .about,
+  .services,
+  .portfolio,
+  .testimonials,
+  .contact {
+    padding: 50px 20px;
+  }
+}
+
+/* Phone */
+@media (max-width: 600px) {
+  .service-grid,
+  .project-grid,
+  .testimonial-grid,
+  .contact-grid,
+  .cert-grid,
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .info-box,
+  .skills-box {
+    min-width: 0;
+    flex: 1 1 100%;
+  }
+
+  .bar,
+  .contact-form {
+    max-width: 100%;
+  }
+
+  .text h2 {
+    font-size: 24px;
+  }
+
+  .text p {
+    font-size: 17px;
+  }
+}
