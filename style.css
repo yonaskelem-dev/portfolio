@@ -1,4 +1,4 @@
-/* ===== Base ===== */
+﻿/* ===== Base ===== */
 :root {
   color-scheme: only light;
   supported-color-schemes: light;
@@ -32,7 +32,7 @@ img {
   position: fixed;
   top: 0;
   left: 0;
-  width: 250px;
+  width: 200px;
   height: 100%;
   background: #fcf8ff;
   border-right: 1px solid #ddd;
@@ -607,7 +607,7 @@ img {
   /* Sidebar slides in from the left */
   .sidebar {
     transform: translateX(-100%);
-    transition: transform 0.3s;
+    transition: transform 0.2s;
   }
 
   .sidebar.open {
