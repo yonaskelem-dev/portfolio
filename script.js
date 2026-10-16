@@ -26,15 +26,49 @@ showSection("home");
 
 const menuBtn = document.getElementById("menuBtn");
 const sidebarEl = document.querySelector(".sidebar");
+const sidebarOverlay = document.getElementById("sidebarOverlay");
 
-// open / close the menu
-menuBtn.addEventListener("click", function () {
-  sidebarEl.classList.toggle("open");
-});
+function openSidebar() {
+  sidebarEl.classList.add("open");
+  menuBtn.classList.add("open");
+  if (sidebarOverlay) sidebarOverlay.classList.add("visible");
+  document.body.style.overflow = "hidden";
+}
 
-// close the menu after clicking a link
+function closeSidebar() {
+  sidebarEl.classList.remove("open");
+  menuBtn.classList.remove("open");
+  if (sidebarOverlay) sidebarOverlay.classList.remove("visible");
+  document.body.style.overflow = "";
+}
+
+// Toggle menu on click
+if (menuBtn) {
+  menuBtn.addEventListener("click", function () {
+    const isOpen = sidebarEl.classList.contains("open");
+    if (isOpen) {
+      closeSidebar();
+    } else {
+      openSidebar();
+    }
+  });
+}
+
+// Tap overlay to close
+if (sidebarOverlay) {
+  sidebarOverlay.addEventListener("click", closeSidebar);
+}
+
+// Close the menu after clicking any nav link
 document.querySelectorAll(".sidebar a").forEach(function (link) {
   link.addEventListener("click", function () {
-    sidebarEl.classList.remove("open");
+    closeSidebar();
   });
+});
+
+// Close menu with Escape key
+window.addEventListener("keydown", function (e) {
+  if (e.key === "Escape" && sidebarEl.classList.contains("open")) {
+    closeSidebar();
+  }
 });
